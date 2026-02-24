@@ -63,6 +63,9 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 16px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 4px;
     align-items: center;
     border-bottom: solid 1px #ddd;
 }
