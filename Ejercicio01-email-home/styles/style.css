@@ -1,0 +1,60 @@
+.container {
+    max-width: 1140px;
+    min-height: 100vh;
+    padding:  24px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -12px;
+}
+
+.sidebar {
+    flex: 0 0 25%;
+    max-width: 25%;
+    padding: 16px 24px;
+    background-color: rgb(216, 216, 216);
+}
+
+.main {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.email-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    align-items: center;
+    border-bottom: solid 1px #ddd;
+}
+
+.email-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.email-list :hover {
+    background-color: rgb(216, 216, 216);
+
+}
