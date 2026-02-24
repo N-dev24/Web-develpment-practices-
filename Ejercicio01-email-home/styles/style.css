@@ -80,3 +80,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
+.nuevo-correo:hover {
+    background-color: #1e4fd8;
+}
