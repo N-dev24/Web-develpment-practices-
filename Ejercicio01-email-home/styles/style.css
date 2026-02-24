@@ -40,6 +40,7 @@ body {
     display: flex;
     flex-direction: column;
     padding: 24px;
+    border-radius: 8px;
     
 }
 
@@ -60,7 +61,7 @@ body {
 .email-item {
     display: flex;
     justify-content: space-between;
-    padding: 12px 16px;
+    padding: 16px 20px;
     align-items: center;
     border-bottom: solid 1px #ddd;
 }
