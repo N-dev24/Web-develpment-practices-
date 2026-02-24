@@ -122,3 +122,20 @@ body {
     width: 100%;
 }
 
+.email-item {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap : 4px;
+}
+
+.search-bar {
+    flex-direction: column;
+    align-items: stretch;
+}
+.search-bar input {
+    width: 100%;
+}
+
+.search-bar button {
+     width: 100%;
+}
