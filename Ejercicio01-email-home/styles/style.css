@@ -55,7 +55,7 @@
     flex-direction: column;
 }
 
-.email-list:hover {
+.email-list :hover {
     background-color: rgb(216, 216, 216);
 
 }
