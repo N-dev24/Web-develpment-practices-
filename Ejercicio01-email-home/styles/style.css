@@ -106,3 +106,12 @@ body {
     border-radius: 4px;
     cursor: pointer;
 }
+
+/*Responsividad*/
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 16px;
+    }
+    
+}
