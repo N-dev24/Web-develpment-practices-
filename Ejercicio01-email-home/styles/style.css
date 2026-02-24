@@ -22,6 +22,7 @@ body {
     max-width: 25%;
     padding: 16px 24px;
     background-color: #e5e7eb;
+    border-radius: 8px;
 }
 
 .sidebar-item {
