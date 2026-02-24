@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
+    background-color:  #f3f4f6;
 }
 
 .container {
@@ -21,7 +21,7 @@ body {
     flex: 0 0 25%;
     max-width: 25%;
     padding: 16px 24px;
-    background-color: rgb(216, 216, 216);
+    background-color: #e5e7eb;
 }
 
 .sidebar-item {
