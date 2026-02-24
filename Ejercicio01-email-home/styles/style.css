@@ -97,3 +97,12 @@ body {
 .nuevo-correo:hover {
     background-color: #1e4fd8;
 }
+
+.search-button {
+    padding: 12px 20px;
+    background-color: #1e4fd8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
