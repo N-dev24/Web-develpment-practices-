@@ -19,6 +19,12 @@
     background-color: rgb(216, 216, 216);
 }
 
+.sidebar-item {
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
 .main {
     flex: 1;
     background-color: white;
