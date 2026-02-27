@@ -90,6 +90,11 @@ body {
     color: #555;
 }
 
+.email-date {
+    font-size: 0.85rem;
+    color: #777;
+}
+
 .email-list {
     display: flex;
     flex-direction: column;
