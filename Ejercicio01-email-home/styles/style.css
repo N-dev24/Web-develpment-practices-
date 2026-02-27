@@ -20,6 +20,17 @@ body {
     color: #2563eb;
 }
 
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-name {
+    font-weight: 0.5rem;
+    color: #555;
+}
+
 .container {
     display: flex;
     max-width: 1140px;
