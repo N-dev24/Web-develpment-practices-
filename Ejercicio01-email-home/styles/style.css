@@ -35,6 +35,8 @@ body {
 
 .sidebar-item:hover {
     background-color: rgb(200, 200, 200);
+    transition: 0.2s ease;
+    cursor: pointer;
 }
 
 .main {
