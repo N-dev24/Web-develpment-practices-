@@ -47,7 +47,7 @@ body {
 .container {
     display: flex;
     max-width: 1140px;
-    min-height: 100vh;
+    min-height: 80vh;
     padding:  24px;
     margin: 0 auto;
 }
