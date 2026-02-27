@@ -69,11 +69,11 @@ body {
     display: flex;
     justify-content: space-between;
     padding: 16px 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-bottom: 4px;
-    align-items: center;
+    border: none;
+    border-radius: 0px;
     border-bottom: solid 1px #ddd;
+    align-items: center;
+    
 }
 
 .email-list {
