@@ -125,7 +125,8 @@ body {
 
 .email-left {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 12px;
 }
 
 .email-info {
