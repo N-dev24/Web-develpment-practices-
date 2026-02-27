@@ -31,6 +31,12 @@ body {
     color: #555;
 }
 
+.user-name:hover {
+    color: #2563eb;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
 .user-avatar {
     width: 36px;
     height: 36px;
