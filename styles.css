@@ -1,5 +1,6 @@
 :root {
     --bg: #0d1117;
+    --card-bg: 161b22;
     --text: #c9d1d9;
     --accent: #862323;
 }
@@ -31,3 +32,17 @@ body {
     gap: 20px;
     margin-top: 20px;
 }
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color : var(--accent);
+}
+
