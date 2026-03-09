@@ -19,7 +19,7 @@ async function cargarCarpeta (nombreCarpeta, idContenedorHTML) {
             if (item.type === 'dir') {
                 const tarjetaHTML = ` 
                 <article class="card">
-                   <h3>${idContenedorHTML.name.replace(/-/g, ' ')}
+                   <h3>${item.name.replace(/-/g, ' ')}</h3>
                    <a href="./${nombreCarpeta}/${item.name}/index.html" class="btn">Ver proyecto</a>
                 </article>
             `;
