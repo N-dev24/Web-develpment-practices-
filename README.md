@@ -1,6 +1,6 @@
-# html-and-Css-practice-
+# Web-develpment-practices-
 
-Repositorio destinado a ejercicios y practicas
+Repositorio destinado a ejercicios y practicas de desarrollo web
 
 ### Cotenido 
 
