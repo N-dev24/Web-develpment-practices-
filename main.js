@@ -30,3 +30,7 @@ async function cargarCarpeta (nombreCarpeta, idContenedorHTML) {
         console.error("Error al cargar los datos", error);
     }
 }
+
+cargarCarpeta('Clase', 'grid-class');
+
+cargarCarpeta('Personal', 'grid-personal');
