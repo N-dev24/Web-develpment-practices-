@@ -1,8 +1,15 @@
 :root {
     --bg: #0d1117;
-    --card-bg: 161b22;
+    --card-bg: #161b22;
     --text: #c9d1d9;
     --accent: #862323;
+}
+
+.header {
+    background-color: var(--card-bg);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #30363d;
 }
 
 body {
