@@ -4,4 +4,4 @@ Repositorio destinado a ejercicios y practicas de desarrollo web
 
 ### Cotenido 
 
-1 - 01 -- Pagina de inicio de correo - Practica introductoria a Css --> https://n-dev24.github.io/Web-develpment-practices-/Ejercicio01-email-home/
+Link a la pagina con las practicas --> https://n-dev24.github.io/Web-develpment-practices-/
