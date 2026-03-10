@@ -9,8 +9,11 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es2016",
+    "target": "es6",
     "types": [],
+    "experimentalDecorators": true, 
+    "emitDecoratorMetadata": true,
+
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
@@ -42,5 +45,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+     "noUncheckedIndexedAccess": true,
+     "exactOptionalPropertyTypes": true,
   }
 }
