@@ -17,6 +17,15 @@ async function cargarCarpeta (nombreCarpeta, idContenedorHTML) {
         
         archivos.forEach(item => {
             if (item.type === 'dir') {
+                
+                let enlace = `./${nombreCarpeta}/${item.name}/index.html`;
+                let textoBoton = 'Ver proyecto';
+
+                if (item.name.toLowerCase().includes('backend')) {
+                    enlace = `https://github.com/${githubUser}/${githubRepo}/tree/main/${nombreCarpeta}/${item.name}`;
+                    textoBoton = 'Ver código en GitHub';
+                }
+
                 const tarjetaHTML = ` 
                 <article class="card">
                    <h3>${item.name.replace(/-/g, ' ')}</h3>
