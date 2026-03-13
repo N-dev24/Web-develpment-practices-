@@ -25,14 +25,18 @@ export class Usuario extends Model<UsuarioAttributes, UsuarioCreationAttributes>
     email!: string;
 
     @ForeignKey( () => Empresa)
-    empresa!= Empresa;
+    @Column
+    empresaId!: Empresa;
+
+    @BelongsTo(() => Empresa)
+    empresa!: Empresa;
 
     @CreatedAt 
     @Column
-    createdat!: Date;
+    createdAt!: Date;
 
     @UpdatedAt
     @Column
-    updatedat!: Date;
-    
+    updatedAt!: Date;
+
 }
