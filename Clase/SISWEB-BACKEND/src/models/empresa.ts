@@ -1,6 +1,6 @@
 import { Table, Model, Column, CreatedAt, UpdatedAt, DataType, HasMany } from 'sequelize-typescript'; 
 import { Optional } from 'sequelize'; 
-import { Usuario } from './Usuario';
+import { Usuario } from './usuario';
 
 
 interface EmpresaAttributes { 
