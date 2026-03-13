@@ -1,4 +1,4 @@
-import { Table, Model, Column, CreatedAt, UpdatedAt, ForeignKey, BelongsTo } from 'sequelize-typescript'; 
+import { Table, Model, Column, CreatedAt, UpdatedAt, ForeignKey, BelongsTo, DataType } from 'sequelize-typescript'; 
 import { EmptyResultError, Optional } from 'sequelize'; 
 import { Empresa } from './empresa';
 import { Interface } from 'node:readline';
@@ -17,16 +17,16 @@ interface UsuarioCreationAttributes extends Optional<UsuarioAttributes, 'id'> {}
 })
 
 export class Usuario extends Model<UsuarioAttributes, UsuarioCreationAttributes> {
-
-    @Column 
-    nombre!: string;
-
-    @Column 
-    email!: string;
-
-    @ForeignKey( () => Empresa)
-    @Column
-    empresaId!: Empresa;
+    
+    @Column({ type: DataType.STRING }) 
+    nombre!: string; 
+    
+    @Column({ type: DataType.STRING }) 
+    email!: string; 
+    
+    @ForeignKey(() => Empresa)
+    @Column({ type: DataType.INTEGER }) 
+    empresaId!: number;
 
     @BelongsTo(() => Empresa)
     empresa!: Empresa;
