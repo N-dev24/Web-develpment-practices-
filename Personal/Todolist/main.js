@@ -5,6 +5,7 @@ const lista = document.getElementById('listaTareas');
 const agregarTarea = () => {
         if (input.value === "") return;
 
+
      //creamos un nuevo elemento de la lista
      const nuevaTarea = document.createElement('li');
      nuevaTarea.innerText = input.value;
@@ -19,6 +20,7 @@ const agregarTarea = () => {
 
      //limpiamos el input para la siguiente tarea
      input.value = "";
+
 }
 
 boton.addEventListener('click', (agregarTarea)) 
@@ -28,3 +30,4 @@ input.addEventListener('keydown', (event) => {
         agregarTarea();
     }
 });
+
