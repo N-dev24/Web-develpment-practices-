@@ -1,3 +1,4 @@
+
 import { Table, Model, Column, CreatedAt, UpdatedAt, DataType } from 'sequelize-typescript'; 
 import { Optional } from 'sequelize'; 
 
