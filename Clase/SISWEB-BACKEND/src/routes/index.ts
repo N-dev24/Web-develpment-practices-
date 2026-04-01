@@ -7,11 +7,7 @@ import usuarioRoutes from './usuarioRoutes';
 
 const apiRouter:Router = Router();  
 
-apiRouter.use('/products', productRoutes);
-apiRouter.use('/empresas', empresaRoutes);
-
-apiRouter.use('/usuarios', usuarioRoutes);
-
+apiRouter.use('/product', productRoutes);
 
 apiRouter.get('/', (req:Request, res: Response) => {  
 res.send('Hello World!')  

@@ -1,9 +1,6 @@
 
-import { Table, Model, Column, CreatedAt, UpdatedAt, DataType, HasMany } from 'sequelize-typescript'; 
+import { Table, Model, Column, CreatedAt, UpdatedAt, DataType } from 'sequelize-typescript'; 
 import { Optional } from 'sequelize'; 
-import { Usuario } from './usuario';
-
-
 
 interface EmpresaAttributes { 
   id: number; 
@@ -12,9 +9,7 @@ interface EmpresaAttributes {
   ubicacion: string; 
 } 
 
-
 interface EmpresaCreationAttributes extends Optional<EmpresaAttributes, 'id'> {} 
-
 
 @Table({ 
   tableName: "Empresas" 
@@ -29,10 +24,6 @@ export class Empresa extends Model<EmpresaAttributes, EmpresaCreationAttributes>
 
   @Column 
   ubicacion!: string; 
-
-
-  @HasMany ( () => Usuario)
-  usuarios!: Usuario[];
 
   @CreatedAt 
   @Column 
