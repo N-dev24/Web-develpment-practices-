@@ -1,3 +1,5 @@
+// ProductPage.tsx
+
 
 import {
   PhotoIcon,
@@ -6,8 +8,11 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/24/outline";
 import { useEffect, useMemo, useState } from "react";
-import type { Product } from "my-types";
-import { getAllProducts } from "../api/productapi";
+import type { Product, Category } from "my-types";
+import { getAllProducts, deleteProduct } from "../api/productapi";
+import { getAllCategories } from "../api/categoryapi";
+import DeleteConfirmModal from "../components/DeleteConfirmModal";
+import ProductDetailModal from "../components/ProductDetailModal";
 
 const SortIcon = ({ className }: { className?: string }) => (
   <svg
@@ -32,17 +37,29 @@ const SortIcon = ({ className }: { className?: string }) => (
 const ProductPage: React.FC = () => {
 
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [titleQuery, setTitleQuery] = useState("");
   const [descriptionQuery, setDescriptionQuery] = useState("");
+  const [categoryId, setCategoryId] = useState<number | null>(null);
+  const [productToDelete, setProductToDelete] = useState<Product | null>(null);
+  const [productToView, setProductToView] = useState<Product | null>(null);
 
   useEffect(() => {
-    getAllProducts().then((products:Product[]) => {
-      setProducts(products);
-      console.log(products);
-    });
+    getAllProducts().then((products: Product[]) => setProducts(products));
+    getAllCategories().then((categories: Category[]) => setCategories(categories));
+ 
   }, []);
 
+  const handleDelete = () => {
+    if (!productToDelete) return;
+    deleteProduct(productToDelete.id).then(() => {
+      setProducts((prev) => prev.filter((p) => p.id !== productToDelete.id));
+      setProductToDelete(null);
+    });
+  };
+
   const filteredProducts = useMemo(() => {
+    console.log(products);
     const _title = titleQuery.trim().toLowerCase();
     const _description = descriptionQuery.trim().toLowerCase();
 
@@ -55,9 +72,12 @@ const ProductPage: React.FC = () => {
         _description.length === 0 ||
         p.description.toLowerCase().includes(_description);
 
-      return matchesTitle && matchesDescription;
+      const matchesCategory =
+        categoryId === null || p.category.id === categoryId;
+
+      return matchesTitle && matchesDescription && matchesCategory;
     });
-  }, [descriptionQuery, titleQuery, products]);
+  }, [descriptionQuery, titleQuery, categoryId, products]);
 
   return (
     <div className="p-4">
@@ -107,9 +127,19 @@ const ProductPage: React.FC = () => {
               <label className="block text-xs font-medium text-gray-600">
                 Category
               </label>
-              <select className="mt-1 w-40 rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                <option>Category 1</option>
-                <option>Category 2</option>
+              <select
+                className="mt-1 w-40 rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm text-gray-900 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
+                value={categoryId ?? ""}
+                onChange={(e) =>
+                  setCategoryId(e.target.value === "" ? null : Number(e.target.value))
+                }
+              >
+                <option value="">All categories</option>
+                {categories.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -151,6 +181,12 @@ const ProductPage: React.FC = () => {
                   <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600">
                     <span className="flex items-center gap-1">
                       Description
+                      <SortIcon className="h-4 w-4 text-gray-400" />
+                    </span>
+                  </th>
+                  <th className="px-3 py-2 text-left text-xs font-semibold text-gray-600">
+                    <span className="flex items-center gap-1">
+                      Category
                       <SortIcon className="h-4 w-4 text-gray-400" />
                     </span>
                   </th>
@@ -211,7 +247,10 @@ const ProductPage: React.FC = () => {
                       </td>
 
                       <td className="px-3 py-3">
-                        <button className="text-blue-600 hover:underline text-sm font-medium">
+                        <button
+                          onClick={() => setProductToView(product)}
+                          className="text-blue-600 hover:underline text-sm font-medium"
+                        >
                           {product.title}
                         </button>
                       </td>
@@ -219,6 +258,11 @@ const ProductPage: React.FC = () => {
                       <td className="px-3 py-3 text-sm text-gray-600">
                         {product.description}
                       </td>
+
+                      <td className="px-3 py-3 text-sm text-gray-600">
+                        {product.category.name}
+                      </td>
+
 
                       <td className="px-3 py-3 text-gray-700">
                         {product.price.toFixed(2)}
@@ -237,11 +281,7 @@ const ProductPage: React.FC = () => {
                       {/* Edit */}
                       <td className="px-3 py-3 text-center">
                         <button
-                          onClick={() =>
-                            window.confirm(
-                              `Save the changes for "${product.title}"?`,
-                            )
-                          }
+                          onClick={() => setProductToView(product)}
                           className="text-blue-600 hover:text-blue-800"
                         >
                           <PencilIcon className="h-4 w-4" />
@@ -251,11 +291,7 @@ const ProductPage: React.FC = () => {
                       {/* Delete */}
                       <td className="px-3 py-3 text-center">
                         <button
-                          onClick={() =>
-                            window.confirm(
-                              `Delete the product "${product.title}"?`,
-                            )
-                          }
+                          onClick={() => setProductToDelete(product)}
                           className="text-red-600 hover:text-red-800"
                         >
                           <TrashIcon className="h-4 w-4" />
@@ -271,6 +307,18 @@ const ProductPage: React.FC = () => {
         </div>
 
       </nav>
+
+      <ProductDetailModal
+        product={productToView}
+        onClose={() => setProductToView(null)}
+        onEdit={() => {}}
+      />
+
+      <DeleteConfirmModal
+        product={productToDelete}
+        onClose={() => setProductToDelete(null)}
+        onConfirm={handleDelete}
+      />
     </div>
   );
 };
